@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name"></string>
     <string name="title_activity_trainer">TrainerActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_trainer_1">Home</string>
+    <string name="title_trainer_2">Dashboard</string>
+    <string name="title_trainer_3">Notifications</string>
+
+    <string name="title_member_1">Find</string>
+    <string name="title_member_2">Calender</string>
+    <string name="title_member_3">Body</string>
+    <string name="title_member_4">Profile</string>
+
     <string name="title_activity_member">MemberActivity</string>
 </resources>
