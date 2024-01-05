@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profile"
+    android:layout_width="360dp"
+    android:layout_height="640dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+
+    <View
+        android:id="@+id/free_icon_u"
+        android:layout_width="109dp"
+        android:layout_height="109dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="141dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/free_icon_user" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="120dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="127dp"
+        android:text="기본정보"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="52dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="168dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+    <View
+        android:id="@+id/rectangle_6"
+        android:layout_width="308dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="198dp"
+        android:background="@drawable/rectangle_6"
+        />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="115dp"
+        android:layout_height="21dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="273dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <View
+        android:id="@+id/rectangle_7"
+        android:layout_width="308dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/rectangle_7"
+        />
+
+    <View
+        android:id="@+id/rectangle_7"
+        android:layout_width="308dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/rectangle_7"
+        />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="116dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="373dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+    <View
+        android:id="@+id/rectangle_8"
+        android:layout_width="308dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="407dp"
+        android:background="@drawable/rectangle_8"
+        />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="110dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="479dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+    <View
+        android:id="@+id/rectangle_9"
+        android:layout_width="308dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="507dp"
+        android:background="@drawable/rectangle_9"
+        />
+
+
+
+</RelativeLayout>

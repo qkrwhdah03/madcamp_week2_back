@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/some_id"
+    android:layout_width="360dp"
+    android:layout_height="195dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="54dp"
+        android:layout_height="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+
+
+</RelativeLayout>
