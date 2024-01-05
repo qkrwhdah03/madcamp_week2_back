@@ -26,9 +26,8 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
         // 수정된 부분 시작
-        final TextView textView = binding.someId; // "some_id"가 아니라 "someId"로 변경
-        textView.setText(getString(R.string.some_id)); // TextView에 문자열 설정
-        // 수정된 부분 끝
+        //final TextView textView = binding.someId; // "some_id"가 아니라 "someId"로 변경
+        //textView.setText(getString(R.string.some_id)); // TextView에 문자열 설정
 
         return root;
     }

@@ -13,7 +13,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="top"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="77dp"

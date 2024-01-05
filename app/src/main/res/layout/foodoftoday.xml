@@ -15,7 +15,6 @@
         android:layout_marginLeft="14dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         android:gravity="top"
         />
@@ -29,7 +28,6 @@
         android:layout_marginLeft="129dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         android:gravity="top"
         />
@@ -41,7 +39,6 @@
         android:layout_marginLeft="258dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         android:gravity="top"
         />

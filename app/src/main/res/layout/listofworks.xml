@@ -8,7 +8,6 @@
     android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="125dp"
         android:layout_height="22dp"
         android:layout_alignParentLeft="true"
@@ -22,7 +21,6 @@
 
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="33dp"
         android:layout_height="0dp"
         android:layout_alignParentLeft="true"
@@ -31,14 +29,12 @@
         android:layout_marginTop="16dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="15dp"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         android:gravity="center_horizontal|center_vertical"
         />
 
 
     <View
-        android:id="@+id/image_20"
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_alignParentLeft="true"

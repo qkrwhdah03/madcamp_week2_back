@@ -18,7 +18,6 @@
         android:background="@drawable/free_icon_user" />
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="120dp"
         android:layout_height="27dp"
         android:layout_alignParentLeft="true"
@@ -31,14 +30,12 @@
         />
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="52dp"
         android:layout_height="22dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="34dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="168dp"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         android:gravity="top"
         />
@@ -51,18 +48,15 @@
         android:layout_marginLeft="26dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="198dp"
-        android:background="@drawable/rectangle_6"
         />
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="115dp"
         android:layout_height="21dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="34dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="273dp"
-        android:text="@string/some_id"
         android:textAppearance="@style/some_id"
         android:gravity="top"
         />
@@ -70,37 +64,30 @@
 
     <!-- Auto layout, variables, and unit scale are not yet supported -->
     <View
-        android:id="@+id/rectangle_7"
         android:layout_width="308dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="26dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="300dp"
-        android:background="@drawable/rectangle_7"
         />
 
     <View
-        android:id="@+id/rectangle_7"
         android:layout_width="308dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="26dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="300dp"
-        android:background="@drawable/rectangle_7"
         />
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="116dp"
         android:layout_height="15dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="37dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="373dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
         android:gravity="top"
         />
 
@@ -112,19 +99,15 @@
         android:layout_marginLeft="26dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="407dp"
-        android:background="@drawable/rectangle_8"
         />
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="110dp"
         android:layout_height="28dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="31dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="479dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
         android:gravity="top"
         />
 
@@ -136,7 +119,6 @@
         android:layout_marginLeft="26dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="507dp"
-        android:background="@drawable/rectangle_9"
         />
 
 
