@@ -11,22 +11,28 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.week2.databinding.FragmentBodyBinding;
-import com.example.week2.ui.body.DashboardViewModel;
 
 public class BodyFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentBodyBinding binding;  // Updated binding class
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        // Use FragmentBodyBinding instead of FragmentDashboardBinding
+        binding = FragmentBodyBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        // Find the TextViews by their IDs
+        TextView someIdTextView1 = binding.someId1;
+        TextView someIdTextView2 = binding.someId2;
+
+        // You can modify the TextViews or the layout as needed
+        // For example, setting text or changing properties
+
+        // Example:
+        someIdTextView1.setText("Hello, World!");
+        someIdTextView2.setText("Another TextView");
+
         return root;
     }
 

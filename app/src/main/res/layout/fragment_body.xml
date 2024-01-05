@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/body"
+    android:layout_width="360dp"
+    android:layout_height="640dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="120dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="46dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="120dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="348dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+</RelativeLayout>

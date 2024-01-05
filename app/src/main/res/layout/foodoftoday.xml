@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/some_id"
+    android:id="@+id/food"
     android:layout_width="360dp"
     android:layout_height="195dp"
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/some_id"
+        android:id="@+id/morning"
         android:layout_width="54dp"
         android:layout_height="37dp"
         android:layout_alignParentLeft="true"
@@ -20,6 +20,98 @@
         android:gravity="top"
         />
 
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <TextView
+        android:id="@+id/lunch"
+        android:layout_width="54dp"
+        android:layout_height="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="129dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+    <TextView
+        android:id="@+id/dinner"
+        android:layout_width="54dp"
+        android:layout_height="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="258dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/some_id"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        />
+
+    <View
+        android:id="@+id/morning_photo"
+        android:layout_width="97dp"
+        android:layout_height="94dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="69dp"
+        android:background="@drawable/rectangle_1"
+        />
+
+    <View
+        android:id="@+id/bob_1"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94dp"
+        android:background="@drawable/bob"
+        />
+
+    <View
+        android:id="@+id/lunch_photo"
+        android:layout_width="97dp"
+        android:layout_height="94dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="134dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="69dp"
+        android:background="@drawable/rectangle_1"
+        />
+
+    <View
+        android:id="@+id/bob_2"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="162dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94dp"
+        android:background="@drawable/bob"
+        />
+
+    <View
+        android:id="@+id/dinner_photo"
+        android:layout_width="97dp"
+        android:layout_height="94dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="255dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="69dp"
+        android:background="@drawable/rectangle_1"
+        />
+
+
+    <View
+        android:id="@+id/bob_3"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="283dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94dp"
+        android:background="@drawable/bob"
+        />
 
 
 </RelativeLayout>
