@@ -25,6 +25,9 @@ public class MemberActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private boolean IsMember;
     private boolean IsTrainer;
+
     ActivityResultLauncher<Intent> StartForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {

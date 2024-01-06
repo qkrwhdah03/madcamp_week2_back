@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame_7"
+    android:layout_width="match_parent"
+    android:layout_height="38dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="98dp"
+    android:clipToOutline="true"
+
+    android:clickable="true"
+    android:onClick="onRelativeLayoutClick">>
+
+
+    <TextView
+        android:id="@+id/working"
+        android:layout_width="125dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="6dp"
+        android:gravity="top"
+        android:text="벤치프레스" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="33dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="265dp"
+        android:layout_marginTop="6dp"
+        android:gravity="top"
+        android:text="0"
+        android:textSize="15sp" />
+
+
+    <Button
+        android:id="@+id/image_12"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="317dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/nemoplus" />
+
+
+</RelativeLayout>

@@ -1,8 +1,8 @@
 package com.example.week2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
 public class ApplicationActivity extends AppCompatActivity {
 
     @Override
