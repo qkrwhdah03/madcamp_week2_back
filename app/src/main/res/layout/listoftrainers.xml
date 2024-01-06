@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame_1"
-    android:layout_width="337dp"
-    android:layout_height="122dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
@@ -15,18 +15,19 @@
         android:layout_marginLeft="18dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="9dp"
+        android:background="@drawable/free_icon_user"
         />
 
     <TextView
-        android:id="@+id/some_id"
+        android:id="@+id/trainername"
         android:layout_width="100dp"
         android:layout_height="23dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="124dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
+        android:text="이름"
+        android:textSize="15sp"
         android:gravity="top"
         />
 
@@ -38,8 +39,8 @@
         android:layout_marginLeft="124dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
+        android:text="소속지역"
+        android:textSize="15sp"
         android:gravity="top"
         />
 

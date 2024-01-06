@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_find"
+        android:icon="@drawable/free_icon_dumbell"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/calendar"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_body"
+        android:icon="@drawable/weight"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/free_icon_user"
+        android:title="" />
+
+</menu>

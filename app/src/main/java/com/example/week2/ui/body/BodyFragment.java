@@ -22,16 +22,7 @@ public class BodyFragment extends Fragment {
         binding = FragmentBodyBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // Find the TextViews by their IDs
-        TextView someIdTextView1 = binding.inbody;
-        TextView someIdTextView2 = binding.workout;
 
-        // You can modify the TextViews or the layout as needed
-        // For example, setting text or changing properties
-
-        // Example:
-        someIdTextView1.setText("Hello, World!");
-        someIdTextView2.setText("Another TextView");
 
         return root;
     }

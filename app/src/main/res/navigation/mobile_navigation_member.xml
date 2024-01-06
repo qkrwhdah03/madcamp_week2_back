@@ -2,30 +2,30 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/navigation_home">
+    android:id="@+id/mobile_navigation_member"
+    app:startDestination="@+id/navigation_find">
 
     <fragment
         android:id="@+id/navigation_find"
         android:name="com.example.week2.ui.find.FindFragment"
-        android:label="find"
+        android:label="@string/title_member_1"
         tools:layout="@layout/fragment_find" />
 
     <fragment
         android:id="@+id/navigation_calendar"
         android:name="com.example.week2.ui.calendar.CalendarFragment"
-        android:label="calendar"
+        android:label="@string/title_member_2"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/navigation_body"
         android:name="com.example.week2.ui.body.BodyFragment"
-        android:label="body"
+        android:label="@string/title_member_3"
         tools:layout="@layout/fragment_body" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.week2.ui.profile.ProfileFragment"
-        android:label="profile"
+        android:label="@string/title_member_4"
         tools:layout="@layout/fragment_profile" />
 </navigation>

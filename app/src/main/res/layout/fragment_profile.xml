@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/free_icon_u"
+        android:layout_width="109dp"
+        android:layout_height="109dp"
+        android:background="@drawable/free_circle_icon"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="36dp" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="120dp"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:gravity="top"
+        android:text="기본 정보"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/free_icon_u"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="52dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:gravity="top"
+        android:text="이름"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/rectangle_"
+
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="236dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tel"
+        android:layout_width="70dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="416dp"
+        android:gravity="top"
+        android:text="전화번호"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <View
+        android:id="@+id/rectangle_6"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/birth"
+        android:layout_width="70dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="312dp"
+        android:gravity="top"
+        android:text="생년월일"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/rectangle_4"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_6"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/info2"
+        android:layout_width="70dp"
+        android:layout_height="22dp"
+        android:gravity="top"
+        android:text="관심지역"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.748"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/rectangle_5"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_4"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

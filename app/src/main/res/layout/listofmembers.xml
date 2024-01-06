@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame_3"
-    android:layout_width="328dp"
-    android:layout_height="97dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToOutline="true"
     android:background="#FFFFFF">
     <ImageView
@@ -24,8 +24,7 @@
         android:layout_marginLeft="94dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="37dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
+        android:text=" "
         android:gravity="top"
         />
 </RelativeLayout>

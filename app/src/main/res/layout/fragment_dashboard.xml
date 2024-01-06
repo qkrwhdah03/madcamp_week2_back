@@ -6,28 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/some_id"
-        android:layout_width="187dp"
-        android:layout_height="51dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="top"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="50dp" />
+    <CalendarView
+        android:id="@+id/trainer_calender"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/rectangle_1"
-        android:layout_width="301dp"
-        android:layout_height="70dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/rectangle_1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="129dp" />
+    <FrameLayout
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trainer_calender">
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

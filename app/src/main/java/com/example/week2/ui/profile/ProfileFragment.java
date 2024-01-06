@@ -12,20 +12,27 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.week2.databinding.FragmentProfileBinding;
 
+import com.example.week2.ui.profile.ProfileViewModel;
+
+
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         ProfileViewModel profileViewModel =
+
                 new ViewModelProvider(this).get(ProfileViewModel.class);
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        //final TextView textView = binding.tex
+        //dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 

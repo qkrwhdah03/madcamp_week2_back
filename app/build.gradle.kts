@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId = "com.example.week2"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,7 +37,7 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:mategit rial:1.11.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")

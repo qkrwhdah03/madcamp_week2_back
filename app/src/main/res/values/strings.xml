@@ -1,10 +1,15 @@
 <resources>
-    <string name="some_id">
-\u00ec\u00b9\u00b4\u00ec\u00b9\u00b4\u00ec\u0098\u00a4\u00eb\u00a1\u009c \u00eb\u00a1\u009c\u00ea\u00b7\u00b8\u00ec\u009d\u00b8\u00ed\u0095\u0098\u00ea\u00b8\u00b0
-</string>
+    <string name="app_name"></string>
     <string name="title_activity_trainer">TrainerActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_trainer_1">Manage</string>
+    <string name="title_trainer_2">Calender</string>
+    <string name="title_trainer_3">Profile</string>
+
+    <string name="title_member_1">Find</string>
+    <string name="title_member_2">Calendar</string>
+    <string name="title_member_3">Body</string>
+    <string name="title_member_4">Profile</string>
+
     <string name="title_activity_member">MemberActivity</string>
 </resources>
