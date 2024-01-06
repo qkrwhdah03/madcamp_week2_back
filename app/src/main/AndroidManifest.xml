@@ -21,12 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MemberActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".TrainerActivity"
-            android:exported="false"/>
+            android:exported="false" />
+        <activity
+            android:name=".ApplicationActivity"
+            android:exported="false" />
     </application>
+
 </manifest>
