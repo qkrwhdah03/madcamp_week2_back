@@ -7,14 +7,20 @@
         android:title="dumbell" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_calendar"
         android:icon="@drawable/calendar"
         android:title="calendar" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_weight"
+        android:icon="@drawable/weight"
+        android:title="weight" />
+
+    <item
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/profile"
         android:title="profile" />
+
 
 
 </menu>

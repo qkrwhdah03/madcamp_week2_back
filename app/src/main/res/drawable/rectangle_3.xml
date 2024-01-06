@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable/rectangle_1.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="281dp"
+    android:height="84dp"
+    android:viewportWidth="281"
+    android:viewportHeight="84"
+    >
+    <group>
+        <clip-path
+            android:pathData="M15 0H266C274.284 0 281 6.71573 281 15V69C281 77.2843 274.284 84 266 84H15C6.71573 84 0 77.2843 0 69V15C0 6.71573 6.71573 0 15 0Z"
+            />
+        <path
+            android:pathData="M0 0V84H281V0"
+            android:fillColor="#D9D9D9"
+            />
+    </group>
+</vector>

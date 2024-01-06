@@ -2,33 +2,31 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/find"
-    android:layout_width="360dp"
-    android:layout_height="640dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/pt_"
-        android:layout_width="85dp"
+        android:layout_width="wrap_content"
         android:layout_height="28dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="19dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
         android:layout_marginTop="18dp"
-        android:text="@string/pt_"
-        android:textAppearance="@style/pt_"
         android:gravity="top"
-        />
+        android:text="@string/pt_"
+        android:textAppearance="@style/pt_" />
 
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="292dp"
         android:layout_height="64dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="35dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="87dp"
-        android:background="@drawable/rectangle_1"
-        />
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/rectangle_1" />
 
 </RelativeLayout>

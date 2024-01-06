@@ -2,33 +2,33 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/body"
-    android:layout_width="360dp"
-    android:layout_height="640dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToOutline="true"
     android:background="#FFFFFF">
     <TextView
-        android:id="@+id/some_id"
+        android:id="@+id/inbody"
         android:layout_width="120dp"
         android:layout_height="23dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="46dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
+        android:text="나의 인바디 현황"
+        android:textSize="15sp"
         android:gravity="top"
         />
 
     <TextView
-        android:id="@+id/some_id"
+        android:id="@+id/workout"
         android:layout_width="120dp"
         android:layout_height="23dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="348dp"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id"
+        android:text="나의 운동 현황"
+        android:textSize="15sp"
         android:gravity="top"
         />
 </RelativeLayout>

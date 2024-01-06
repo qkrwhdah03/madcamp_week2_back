@@ -22,6 +22,7 @@
         android:name="com.example.week2.ui.body.BodyFragment"
         android:label="body"
         tools:layout="@layout/fragment_body" />
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.week2.ui.profile.ProfileFragment"

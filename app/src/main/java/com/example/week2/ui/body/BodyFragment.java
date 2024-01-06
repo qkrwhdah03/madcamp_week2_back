@@ -23,8 +23,8 @@ public class BodyFragment extends Fragment {
         View root = binding.getRoot();
 
         // Find the TextViews by their IDs
-        TextView someIdTextView1 = binding.someId1;
-        TextView someIdTextView2 = binding.someId2;
+        TextView someIdTextView1 = binding.inbody;
+        TextView someIdTextView2 = binding.workout;
 
         // You can modify the TextViews or the layout as needed
         // For example, setting text or changing properties
