@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ApplicationMemberFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_goal_black_24dp" />
+
+            <TextView
+                android:id="@+id/application_goal"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="운동 목적" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/application_goal1_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기초 체력 증진" />
+
+            <CheckBox
+                android:id="@+id/application_goal2_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="증량 / 근육 증가" />
+            <CheckBox
+                android:id="@+id/application_goal3_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="감량 / 다이어트"/>
+            <CheckBox
+                android:id="@+id/application_goal4_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="바디 프로필"/>
+            <CheckBox
+                android:id="@+id/application_goal5_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대회 / 수상 도전" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_checklist_black_24dp" />
+
+            <TextView
+                android:id="@+id/application_check"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기본 사항" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/application_check1_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남성 트레이너 선호해요" />
+
+            <CheckBox
+                android:id="@+id/application_check2_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여성 트레이너 선호해요" />
+            <CheckBox
+                android:id="@+id/application_check3_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PT 경험 있어요"/>
+            <CheckBox
+                android:id="@+id/application_check4_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주 1~2회 선호해요"/>
+            <CheckBox
+                android:id="@+id/application_check5_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주 3~4회 선호해요" />
+            <CheckBox
+                android:id="@+id/application_check6_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주 5회 이상 선호해요" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
