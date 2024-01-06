@@ -21,7 +21,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro" ,
             )
         }
     }
@@ -46,4 +46,11 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Kakao API
+    //implementation("com.kakao.sdk:v2-user:2.19.0") // 카카오 로그인
+    //implementation("com.kakao.sdk:v2-talk:2.19.0") // 친구, 메시지(카카오톡)
+    //implementation("com.kakao.sdk:v2-share:2.19.0") // 메시지(카카오톡 공유)
+    //implementation("com.kakao.sdk:v2-navi:2.19.0") // 카카오내비
+    //implementation("com.kakao.sdk:v2-cert:2.19.0") // 카카오 인증서비스
 }
