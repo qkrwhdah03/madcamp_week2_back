@@ -1,6 +1,7 @@
 package com.example.week2;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,10 +23,12 @@ public class MemberActivity extends AppCompatActivity {
 
         binding = ActivityMemberBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
+
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_find, R.id.navigation_calendar, R.id.navigation_body, R.id.navigation_profile)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_member);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
