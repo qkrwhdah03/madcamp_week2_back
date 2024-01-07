@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
@@ -39,6 +40,8 @@ public class ApplicationActivity extends AppCompatActivity {
         birth_flag = 0;
         gender_flag = 0;
         user_flag = 0;
+        memberFragment = new ApplicationMemberFragment();
+        trainerFragment = new ApplicationTrainerFragment();
     }
 
     private boolean check_filled(){
@@ -149,7 +152,6 @@ public class ApplicationActivity extends AppCompatActivity {
                         // trainer application fragment를 띄움
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();
-                        trainerFragment = new ApplicationTrainerFragment();
                         ft.replace(R.id.new_form_container, trainerFragment);
                         ft.commit();
                     }
@@ -167,7 +169,6 @@ public class ApplicationActivity extends AppCompatActivity {
                         // member application fragment를 띄움
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();
-                        memberFragment = new ApplicationMemberFragment();
                         ft.replace(R.id.new_form_container, memberFragment);
                         ft.commit();
                     }
@@ -205,20 +206,17 @@ public class ApplicationActivity extends AppCompatActivity {
                         json_string = item.toJsonString();
                     }
                     // 3. 서버로 전송
-                    
 
+                    // 4. 메인 액티비티로 반환
+                    Intent intent = new Intent(ApplicationActivity.this, MainActivity.class);
+                    Boolean result = iuser.equals("Trainer");
+                    intent.putExtra("isTrainer",Boolean.toString(result)); // 트레이너인지 정보를 전달
+                    setResult(RESULT_OK, intent);
+                    finish();
                 } else{
                     Toast.makeText(ApplicationActivity.this, "입력하지 않은 칸이 있습니다", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-        // Main Activity로 값 전달.. 제출버튼 클릭시
-        /*
-        Intent intent = new Intent(ApplicationActivity.this, MainActivity.class);
-        intent.putExtra("result","resultData");
-        setResult(RESULT_OK, intent);
-        finish();
-         */
     }
 }
