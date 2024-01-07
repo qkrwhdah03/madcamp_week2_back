@@ -31,4 +31,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_activity_logo" />
 
+    <Button
+        android:id="@+id/kako_logout_button"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="104dp"
+        android:backgroundTint="@color/kakao_yellow"
+        android:textColor="@color/black"
+        android:text="Logout"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
