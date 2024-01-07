@@ -45,28 +45,5 @@
         android:gravity="top"
         />
 
-    <TextView
-        android:layout_width="33dp"
-        android:layout_height="0dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="254dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:textAppearance="@style/some_id"
-        android:gravity="center_horizontal|center_vertical"
-        />
-
-
-    <View
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="315dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/work_plus"
-        />
 
 </RelativeLayout>

@@ -2,23 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_find"
-        android:icon="@drawable/free_icon_dumbell"
-        android:title="" />
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/dumbell"
+        android:title="dumbell" />
 
     <item
         android:id="@+id/navigation_calendar"
         android:icon="@drawable/calendar"
-        android:title="" />
+        android:title="calendar" />
 
     <item
-        android:id="@+id/navigation_body"
+        android:id="@+id/navigation_weight"
         android:icon="@drawable/weight"
-        android:title="" />
+        android:title="weigt"/>
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/free_icon_user"
-        android:title="" />
+        android:icon="@drawable/profile"
+        android:title="profile" />
+
+
 
 </menu>

@@ -21,6 +21,9 @@ public class BodyFragment extends Fragment {
         // Use FragmentBodyBinding instead of FragmentDashboardBinding
         binding = FragmentBodyBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+
         return root;
     }
 

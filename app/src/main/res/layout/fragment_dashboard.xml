@@ -7,7 +7,7 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <CalendarView
-        android:id="@+id/trainer_calendar"
+        android:id="@+id/trainer_calender"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -20,34 +20,9 @@
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trainer_calendar"
-        app:layout_constraintVertical_bias="0.312">
+        app:layout_constraintTop_toBottomOf="@+id/trainer_calender">
 
-        <ImageButton
-            android:id="@+id/trainer_todo_add_button"
-            android:contentDescription="add_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@color/white"
-            android:src="@android:drawable/ic_menu_add"
-            android:layout_gravity="right"/>
-
-        <ListView
-            android:id="@+id/trainer_todo_listview"
-            android:layout_width="360dp"
-            android:layout_height="270dp"
-            android:layout_marginTop="30dp"/>
-
-        <TextView
-            android:id="@+id/calendar_todo_text"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:text="Sample text ... "
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal"/>
     </FrameLayout>
 
 

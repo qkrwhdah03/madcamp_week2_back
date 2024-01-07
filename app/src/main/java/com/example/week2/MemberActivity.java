@@ -28,10 +28,13 @@ public class MemberActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+
                 R.id.navigation_find, R.id.navigation_calendar, R.id.navigation_body, R.id.navigation_profile)
+
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_member);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

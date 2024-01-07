@@ -23,16 +23,20 @@ public class CalendarFragment extends Fragment {
 
     private FragmentCalendarBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+
         CalendarViewModel calendarViewModel =
                 new ViewModelProvider(this).get(CalendarViewModel.class);
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        //final TextView textView = binding.textHome;
+        //CalendarViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        Button addButton = root.findViewById(R.id.image_9);
+        Button addButton = view.findViewById(R.id.image_9);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,13 +48,13 @@ public class CalendarFragment extends Fragment {
                 fragmentTransaction.add(R.id.fragment_container, addworkFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-                */
-
+           */
             }
         });
 
-        return root;
+        return view;
     }
+
 
     @Override
     public void onDestroyView() {
@@ -58,6 +62,7 @@ public class CalendarFragment extends Fragment {
         binding = null;
     }
 
+    /*
     public void showFoodOfToday(View view) {
         // View를 찾아옵니다.
         View foodOfTodayLayout = binding.getRoot().findViewById(R.id.foodoftoday);

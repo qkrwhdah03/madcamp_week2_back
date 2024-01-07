@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,13 +24,6 @@ public class TrainerActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
-        // 위에 바 숨기기
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.hide();
-        }
-
-        // 네비게이션바 설정
         BottomNavigationView navView = findViewById(R.id.nav_view);
         //Passing each menu ID as a set of Ids because each
         //menu should be considered as top level destinations.

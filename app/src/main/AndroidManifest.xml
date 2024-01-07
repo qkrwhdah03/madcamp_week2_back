@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,12 +26,10 @@
             android:exported="false" />
         <activity
             android:name=".TrainerActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:exported="false" />
         <activity
             android:name=".ApplicationActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:exported="false" />
     </application>
 
 </manifest>
