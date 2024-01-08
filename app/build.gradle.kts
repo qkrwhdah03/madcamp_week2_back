@@ -45,6 +45,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.7.6")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // Kakao API

@@ -2,10 +2,14 @@ package com.example.week2;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.icu.util.Output;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,15 +17,30 @@ import android.widget.Toast;
 
 import com.example.week2.databinding.ActivityMainBinding;
 import com.kakao.sdk.auth.model.OAuthToken;
+import com.kakao.sdk.user.UserApi;
 import com.kakao.sdk.user.UserApiClient;
+import com.kakao.sdk.user.model.User;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private ProfileItem profile;
     private boolean IsMember;
     private boolean IsTrainer;
 
@@ -29,13 +48,17 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    String application_result = result.getData().getStringExtra("isTrainer").toString();
-                    IsTrainer = application_result.equals("true");
+                    String application_result = result.getData().getStringExtra("profile");
+
+                    ProfileItem item = ProfileItem.getItemFromJsonString(application_result);
+                    IsTrainer = item.getUser().equals("Trainer");
                     if (IsTrainer) {
                         Intent trainer_intent = new Intent(this, TrainerActivity.class);
+                        trainer_intent.putExtra("profile", application_result);
                         startActivity(trainer_intent);
                     } else {
                         Intent user_intent = new Intent(this, MemberActivity.class);
+                        user_intent.putExtra("profile", application_result);
                         startActivity(user_intent);
                     }
                 }
@@ -49,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
          true     false   --> 바로 member 앱으로 넘어감
          false            --> 입력 폼 창으로 넘어감
          */
-        IsMember = true;
-        IsTrainer = false;
+        //IsMember = false;
+        //IsTrainer = true;
     }
 
     @Override
@@ -76,10 +99,31 @@ public class MainActivity extends AppCompatActivity {
                     kakao_login_button.setVisibility(View.GONE);
                     logout_button.setVisibility(View.VISIBLE);
                     // 해당 카카오 계정에 대한 프로필 정보를 요청해서 받아오고 IsMember, Istrainer 설정하기
-                    IsMember = true;
-                    IsTrainer= true;
+                    UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
+                        @Override
+                        public Unit invoke(User user, Throwable throwable) {
+                            if(user != null){
+                                long userId = user.getId();
+                                // 서버에 userId에 대응되는 profile 정보를 요청
+                                requestProfileUsingId(userId);
+                                //Toast.makeText(MainActivity.this, Long.toString(userId), Toast.LENGTH_LONG).show();
+                            } else{
+                                //Toast.makeText(MainActivity.this, "로그인 안됨", Toast.LENGTH_LONG).show();
+                            }
+                            return null;
+                        }
+                    });
+                    // 받은 정보에 따라 설정하기
+                    if(profile != null){
+                        IsMember = true;
+                        IsTrainer = profile.getUser().equals("Trainer");
+                        Log.d("Procedure","Profile is not null");
+                    } else{
+                        IsMember = false;
+                        Log.d("Procedure","Profile is null");
+                    }
                     // Intent 실행
-                    afterLoginStartIntent();
+                    afterLoginStartIntent(profile);
 
                 } else {
                     // 로그인 실패
@@ -119,19 +163,39 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void afterLoginStartIntent() {
+    private void afterLoginStartIntent(ProfileItem item) {
         if (!IsMember) { // 멤버가 아니라면 프로필 생성 처리 후 이동
             Intent application_intent = new Intent(this, ApplicationActivity.class);
             StartForResult.launch(application_intent);
         } else {
             if (IsTrainer) {
                 Intent trainer_intent = new Intent(this, TrainerActivity.class);
+                trainer_intent.putExtra("profile", item.toJsonString());
                 startActivity(trainer_intent);
             } else {
                 Intent user_intent = new Intent(this, MemberActivity.class);
+                user_intent.putExtra("profile", item.toJsonString());
                 startActivity(user_intent);
             }
         }
+    }
+
+    private void requestProfileUsingId(long id){
+        HttpRequestor.GET("http://172.10.7.24:80/check", Long.toString(id), new HttpCallback() {
+            @Override
+            public void onSuccess(String result) {
+                ProfileItem item = ProfileItem.getItemFromJsonString(result);
+                handleProfileResult(item);
+            }
+            @Override
+            public void onFailure(Exception e) {
+            }
+        });
+    }
+
+    private void handleProfileResult(ProfileItem item){
+        profile = item;
+        return;
     }
     /*
     public String getKeyHash(){

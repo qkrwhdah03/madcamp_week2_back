@@ -16,6 +16,7 @@ import com.example.week2.databinding.ActivityMemberBinding;
 public class MemberActivity extends AppCompatActivity {
 
     private ActivityMemberBinding binding;
+    private ProfileItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,9 @@ public class MemberActivity extends AppCompatActivity {
         binding = ActivityMemberBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
+
+        // 로그인된 프로필 얻어오기
+        item = ProfileItem.getItemFromJsonString(getIntent().getStringExtra("profile"));
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();

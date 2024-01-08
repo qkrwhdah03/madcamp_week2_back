@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_todo_black_24dp"
+        android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/title_trainer_1" />
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_calender_black_24dp"
+        android:icon="@drawable/ic_todo_black_24dp"
         android:title="@string/title_trainer_2" />
     <item
         android:id="@+id/navigation_notifications"

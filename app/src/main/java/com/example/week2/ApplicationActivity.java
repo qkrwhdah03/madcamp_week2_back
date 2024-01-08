@@ -1,5 +1,7 @@
 package com.example.week2;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,6 +11,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +23,13 @@ import com.example.week2.ui.ApplicationMemberFragment;
 import com.example.week2.ui.ApplicationTrainerFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ApplicationActivity extends AppCompatActivity {
@@ -31,8 +41,11 @@ public class ApplicationActivity extends AppCompatActivity {
     private int gender_flag;
     private int user_flag;
 
+    private String application_result;
+
     private ApplicationTrainerFragment trainerFragment;
     private ApplicationMemberFragment memberFragment;
+
 
     public ApplicationActivity(){
         name_flag = 0;
@@ -40,6 +53,7 @@ public class ApplicationActivity extends AppCompatActivity {
         birth_flag = 0;
         gender_flag = 0;
         user_flag = 0;
+        application_result = "";
         memberFragment = new ApplicationMemberFragment();
         trainerFragment = new ApplicationTrainerFragment();
     }
@@ -183,7 +197,7 @@ public class ApplicationActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String json_string;
+                String json_string="";
                 if(check_filled()){
                     // 서버에 정보 보내주기
                     // 1. 정보 모아서 ProfileItem 만들기
@@ -192,6 +206,7 @@ public class ApplicationActivity extends AppCompatActivity {
                     String ibirth = birth.getText().toString();
                     String igender = man.isChecked()? "Male":"Female";
                     String iuser = trainer.isChecked()? "Trainer":"Member";
+
                     if(iuser.equals("Trainer")){ // Trainer
                         String ibelong = trainerFragment.getBelong();
                         String ihistory = trainerFragment.getBelong();
@@ -206,11 +221,17 @@ public class ApplicationActivity extends AppCompatActivity {
                         json_string = item.toJsonString();
                     }
                     // 3. 서버로 전송
-
+                    requestSaveApplication(json_string);
+                    // result 잘 전달된건지 확인하고 아니면 재시도...
+                    if(application_result.equals("")){
+                        Log.d("Procedure", "Application Save Success");
+                    } else{
+                        Toast.makeText(ApplicationActivity.this, "제출 실패 다시 제출해주세요", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     // 4. 메인 액티비티로 반환
                     Intent intent = new Intent(ApplicationActivity.this, MainActivity.class);
-                    Boolean result = iuser.equals("Trainer");
-                    intent.putExtra("isTrainer",Boolean.toString(result)); // 트레이너인지 정보를 전달
+                    intent.putExtra("profile", json_string); // 트레이너인지 정보를 전달
                     setResult(RESULT_OK, intent);
                     finish();
                 } else{
@@ -218,5 +239,22 @@ public class ApplicationActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void requestSaveApplication(String json_string){
+        HttpRequestor.POST("http://172.10.7.24:80/register", json_string, new HttpCallback() {
+            @Override
+            public void onSuccess(String result) {
+                handleResult(result);
+            }
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+    }
+
+    private void handleResult(String result){
+        application_result = result;
     }
 }
