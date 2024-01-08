@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private ProfileItem profile;
+    private String userId;
     private boolean IsMember;
     private boolean IsTrainer;
 
@@ -104,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public Unit invoke(User user, Throwable throwable) {
                             if(user != null){
-                                long userId = user.getId();
+                                userId = Long.toString(user.getId());
                                 // 서버에 userId에 대응되는 profile 정보를 요청
-                                requestProfileUsingId(userId);
+                                requestProfileUsingId(user.getId());
                                 //Toast.makeText(MainActivity.this, Long.toString(userId), Toast.LENGTH_LONG).show();
                             } else{
                                 //Toast.makeText(MainActivity.this, "로그인 안됨", Toast.LENGTH_LONG).show();
@@ -167,14 +168,17 @@ public class MainActivity extends AppCompatActivity {
     private void afterLoginStartIntent(ProfileItem item) {
         if (!IsMember) { // 멤버가 아니라면 프로필 생성 처리 후 이동
             Intent application_intent = new Intent(this, ApplicationActivity.class);
+            application_intent.putExtra("kakaoid", userId);
             StartForResult.launch(application_intent);
         } else {
             if (IsTrainer) {
                 Intent trainer_intent = new Intent(this, TrainerActivity.class);
+                item.setKakaoid(userId);
                 trainer_intent.putExtra("profile", item.toJsonString());
                 startActivity(trainer_intent);
             } else {
                 Intent user_intent = new Intent(this, MemberActivity.class);
+                item.setKakaoid(userId);
                 user_intent.putExtra("profile", item.toJsonString());
                 startActivity(user_intent);
             }

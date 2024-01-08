@@ -200,6 +200,8 @@ public class ApplicationActivity extends AppCompatActivity {
                 String json_string="";
                 if(check_filled()){
                     // 서버에 정보 보내주기
+                    // 0. kakaoid
+                    String ikakaoid = getIntent().getStringExtra("kakaoid");
                     // 1. 정보 모아서 ProfileItem 만들기
                     String iname = name.getText().toString();
                     String iphone = phone.getText().toString();
@@ -212,18 +214,20 @@ public class ApplicationActivity extends AppCompatActivity {
                         String ihistory = trainerFragment.getBelong();
                         Bitmap iimage = trainerFragment.getImage();
                         ProfileItem item = ProfileItem.getTrainerItem(iname, iphone, ibirth, igender, iuser, ibelong, iimage, ihistory);
+                        item.setKakaoid(ikakaoid);
                         json_string = item.toJsonString();
                     }
                     else{ // Member 정보 처리
                         ArrayList<Integer> igoal = memberFragment.getGoal();
                         ArrayList<Integer> icheck = memberFragment.getCheck();
                         ProfileItem item = ProfileItem.getMemberItem(iname, iphone, ibirth, igender, iuser, igoal, icheck);
+                        item.setKakaoid(ikakaoid);
                         json_string = item.toJsonString();
                     }
                     // 3. 서버로 전송
                     requestSaveApplication(json_string);
                     // result 잘 전달된건지 확인하고 아니면 재시도...
-                    if(application_result.equals("")){
+                    if(application_result.equals("Done")){
                         Log.d("Procedure", "Application Save Success");
                     } else{
                         Toast.makeText(ApplicationActivity.this, "제출 실패 다시 제출해주세요", Toast.LENGTH_SHORT).show();

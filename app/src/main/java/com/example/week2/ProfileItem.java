@@ -14,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ProfileItem {
+    private String kakaoid;
     private String name;
     private String phone;
     private String birth;
@@ -48,6 +49,10 @@ public class ProfileItem {
         return new ProfileItem(name, phone, birth, gender, user, "", null, "", goal, check);
     }
 
+    public void setKakaoid(String kakaoid) {
+        this.kakaoid = kakaoid;
+    }
+
     static ProfileItem getItemFromJsonString(String json){
         JsonObject jsonObject;
         if(json.equals("")){ // 만약 프로필이 없다면..
@@ -65,6 +70,7 @@ public class ProfileItem {
     }
 
     static ProfileItem getItemFromJsonObject(JsonObject obj){
+        String okakaoid = obj.get("kakaoid").getAsString();
         String oname = obj.get("name").getAsString();
         String ophone = obj.get("phone").getAsString();
         String obirth = obj.get("birthdate").getAsString();
@@ -96,9 +102,12 @@ public class ProfileItem {
                 ogoal.add(ja.get(i).getAsInt());
             }
         }
-        return new ProfileItem(oname, ophone, obirth, ogender, ouser, obelong, oimage, ohistory, ogoal, ocheck);
+        ProfileItem item =new ProfileItem(oname, ophone, obirth, ogender, ouser, obelong, oimage, ohistory, ogoal, ocheck);
+        item.setKakaoid(okakaoid);
+        return item;
     }
 
+    public String getKakaoid(){return kakaoid;}
     public String getName(){return name;}
     public String getPhone(){return phone;}
     public String getBirth(){return birth;}
@@ -116,6 +125,7 @@ public class ProfileItem {
     public String toJsonString(){ // 이미지는 포함하지 않는다.
         JsonObject item = new JsonObject();
         try {
+            item.addProperty("kakaoid", kakaoid);
             item.addProperty("name", name);
             item.addProperty("phone", phone);
             item.addProperty("birthdate", birth);
