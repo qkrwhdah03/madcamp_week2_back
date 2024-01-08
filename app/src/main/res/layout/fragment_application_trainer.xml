@@ -64,7 +64,7 @@
         </LinearLayout>
 
 
-        <ImageView
+        <ImageButton
             android:id="@+id/trainer_profile_imageview"
             android:layout_marginTop="20dp"
             android:layout_width="100dp"
@@ -102,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:hint="소개 및 어팔 등" />
+                android:hint="소개 및 어필 등" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 

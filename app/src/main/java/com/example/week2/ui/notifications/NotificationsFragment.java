@@ -1,5 +1,6 @@
 package com.example.week2.ui.notifications;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,17 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.week2.ProfileItem;
+import com.example.week2.R;
 import com.example.week2.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
+    private NotificationsViewModel notificationsViewModel;
+    private ProfileItem item;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -25,14 +31,22 @@ public class NotificationsFragment extends Fragment {
                 new ViewModelProvider(this).get(NotificationsViewModel.class);
 
         // 서버에서 프로필 데이터 받아오고 그걸로 초기화 해주기
-
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        notificationsViewModel = new ViewModelProvider(requireActivity()).get(NotificationsViewModel.class);
+        item = notificationsViewModel.getProfileItem();
+
+        // 사진
+        ImageView trainerProfileImage = binding.trainerProfileImage;
+        Bitmap image = item.getImage();
+        if(image != null) trainerProfileImage.setImageBitmap(image);
+        else trainerProfileImage.setImageResource(R.drawable.basic_profile);
 
         // 이름
         EditText trainer_profile_name_edittext =  binding.trainerProfileNameTextedit;
         if(trainer_profile_name_edittext != null){
-            trainer_profile_name_edittext.setText("서버에서 받은 이름");
+            trainer_profile_name_edittext.setText(item.getName());
             //trainer_profile_name_edittext.setEnabled(false);
             trainer_profile_name_edittext.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -54,7 +68,7 @@ public class NotificationsFragment extends Fragment {
         // 전화번호
         EditText trainer_profile_phone_edittext = binding.trainerProfilePhoneTextedit;
         if(trainer_profile_phone_edittext != null){
-            trainer_profile_phone_edittext.setText("이게 입력");
+            trainer_profile_phone_edittext.setText(item.getPhone());
             //trainer_profile_phone_edittext.setEnabled(false);
             trainer_profile_phone_edittext.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -74,7 +88,7 @@ public class NotificationsFragment extends Fragment {
         // 생일
         EditText trainer_profile_birth_edittext=  binding.trainerProfileBirthEdittext;
         if(trainer_profile_birth_edittext != null){
-            trainer_profile_birth_edittext.setText("서버에서 받은 생일");
+            trainer_profile_birth_edittext.setText(item.getBirth());
             //trainer_profile_birth_edittext.setEnabled(false);
             trainer_profile_birth_edittext.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -96,7 +110,7 @@ public class NotificationsFragment extends Fragment {
         // 소속
         EditText trainer_profile_belong_edittext = binding.trainerProfileBelongEdittext;
         if(trainer_profile_belong_edittext != null){
-            trainer_profile_belong_edittext.setText("서버에서 받은 소속");
+            trainer_profile_belong_edittext.setText(item.getBelong());
             // trainer_profile_belong_edittext.setEnabled(false);
             trainer_profile_belong_edittext.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -116,8 +130,21 @@ public class NotificationsFragment extends Fragment {
         }
 
         // 경력
-        ListView trainer_profile_history_listview = binding.trainerProfileHistoryListview;
-        if(trainer_profile_history_listview != null){
+        EditText trainer_profile_history_edittext = binding.trainerProfileHistoryEdittext;
+        if(trainer_profile_history_edittext != null){
+            trainer_profile_history_edittext.setText(item.getHistory());
+            trainer_profile_history_edittext.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
         }
         return root;
     }

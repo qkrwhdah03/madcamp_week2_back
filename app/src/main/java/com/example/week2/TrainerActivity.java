@@ -2,6 +2,7 @@ package com.example.week2;
 
 import android.os.Bundle;
 
+import com.example.week2.ui.notifications.NotificationsViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
@@ -16,6 +17,8 @@ import com.example.week2.databinding.ActivityTrainerBinding;
 public class TrainerActivity extends AppCompatActivity {
 
     private ActivityTrainerBinding binding;
+    private ProfileItem item;
+    private NotificationsViewModel notificationsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,13 @@ public class TrainerActivity extends AppCompatActivity {
         binding = ActivityTrainerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
+
+        // 로그인된 프로필 얻어오기
+        item = ProfileItem.getItemFromJsonString(getIntent().getStringExtra("profile"));
+
+        // Notification Fragmeent로 전달
+        notificationsViewModel = new NotificationsViewModel();
+        notificationsViewModel.setProfileItem(item);
 
         // 위에 바 숨기기
         ActionBar actionBar = getSupportActionBar();

@@ -27,7 +27,6 @@ public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
-
     // 달력 관련 정보 저장
     private int year;
     private int month;

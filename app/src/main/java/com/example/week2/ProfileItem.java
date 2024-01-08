@@ -1,11 +1,15 @@
 package com.example.week2;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONStringer;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonArray;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ProfileItem {
@@ -40,33 +44,106 @@ public class ProfileItem {
     }
     static ProfileItem getMemberItem(String name, String phone, String birth, String gender,
                                      String user, ArrayList<Integer> goal, ArrayList<Integer> check){
-        return new ProfileItem(name, phone, birth, gender, user, null, null, null, goal, check);
+        return new ProfileItem(name, phone, birth, gender, user, "", null, "", goal, check);
     }
 
-    public String toJsonString(){
-        JSONObject item = new JSONObject();
+    static ProfileItem getItemFromJsonString(String json){
+        JsonObject jsonObject;
+        if(json.equals("")){ // 만약 프로필이 없다면..
+            return null;
+        }
         try {
-            item.put("name", name);
-            item.put("phone", phone);
-            item.put("birthdate", birth);
-            item.put("gender", gender);
-            item.put("belong", belong);
-            item.put("history", history);
-            item.put("user", user);
+            jsonObject = (JsonObject) JsonParser.parseString(json);
+        } catch (Exception e){
+            Log.d("Procedure", "Not a valid json String");
+            return null;
+        }
+        return getItemFromJsonObject(jsonObject);
+    }
 
-            JSONArray goal_json = new JSONArray();
-            for(int i=0; i<goal.size(); ++i){
-                goal_json.put(goal.get(i));
+    static ProfileItem getItemFromJsonObject(JsonObject obj){
+        String oname = obj.get("name").getAsString();
+        String ophone = obj.get("phone").getAsString();
+        String obirth = obj.get("birthdate").getAsString();
+        String ogender = obj.get("gender").getAsString();
+        String ouser = obj.get("user").getAsString();
+        String obelong = obj.get("belong").getAsString();
+        String ohistory = obj.get("history").getAsString();
+        String o_string_image = obj.get("image").getAsString();
+        Bitmap oimage;
+        // oimage를 bitmap으로 변환
+        if(o_string_image.length()==0){ oimage = null; }
+        else{
+            byte[] decodedByteArray = Base64.decode(o_string_image, Base64.DEFAULT);
+            oimage = BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
+        }
+
+
+        ArrayList<Integer> ocheck  = new ArrayList<>();
+        JsonArray ja = obj.get("tag").getAsJsonArray();
+        if(ja != null){
+            for(int i=0; i<ja.size(); ++i){
+                ocheck.add(ja.get(i).getAsInt());
             }
-            item.put("goal", goal_json);
-
-            JSONArray check_json = new JSONArray();
-            for(int i=0; i<check.size(); ++i){
-                check_json.put(check.get(i));
+        }
+        ArrayList<Integer> ogoal  = new ArrayList<>();
+        JsonArray ja2 = obj.get("goal").getAsJsonArray();
+        if(ja2 != null){
+            for(int i=0; i<ja2.size(); ++i){
+                ogoal.add(ja.get(i).getAsInt());
             }
-            item.put("tag", check_json);
+        }
+        return new ProfileItem(oname, ophone, obirth, ogender, ouser, obelong, oimage, ohistory, ogoal, ocheck);
+    }
 
-            //item.put("image", );
+    public String getName(){return name;}
+    public String getPhone(){return phone;}
+    public String getBirth(){return birth;}
+    public String getGender(){return gender;}
+    public String getUser(){return user;}
+    public String getBelong(){return belong;}
+    public String getHistory(){return history;}
+    public ArrayList<Integer> getGoal(){return goal;}
+    public ArrayList<Integer> getCheck(){return check;}
+
+    public Bitmap getImage(){
+        return image;
+    }
+
+    public String toJsonString(){ // 이미지는 포함하지 않는다.
+        JsonObject item = new JsonObject();
+        try {
+            item.addProperty("name", name);
+            item.addProperty("phone", phone);
+            item.addProperty("birthdate", birth);
+            item.addProperty("gender", gender);
+            item.addProperty("belong", belong);
+            item.addProperty("history", history);
+            item.addProperty("user", user);
+
+            JsonArray goal_json = new JsonArray();
+            if(goal != null) {
+                for (int i = 0; i < goal.size(); ++i) {
+                    goal_json.add(goal.get(i));
+                }
+            }
+            item.add("goal", goal_json);
+
+            JsonArray check_json = new JsonArray();
+            if(check != null) {
+                for (int i = 0; i < check.size(); ++i) {
+                    check_json.add(check.get(i));
+                }
+            }
+            item.add("tag", check_json);
+
+            if(image != null) {
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] byteArray = byteArrayOutputStream.toByteArray();
+                String encoded_image = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                item.addProperty("image", encoded_image);
+            } else item.addProperty("image", "");
 
         } catch (Exception e){
             e.printStackTrace();
