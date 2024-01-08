@@ -232,6 +232,7 @@ public class ApplicationActivity extends AppCompatActivity {
                     // 4. 메인 액티비티로 반환
                     Intent intent = new Intent(ApplicationActivity.this, MainActivity.class);
                     intent.putExtra("profile", json_string); // 트레이너인지 정보를 전달
+                    Log.d("Procedure", json_string);
                     setResult(RESULT_OK, intent);
                     finish();
                 } else{

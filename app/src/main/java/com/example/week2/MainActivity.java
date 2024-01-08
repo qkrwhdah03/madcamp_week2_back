@@ -49,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     String application_result = result.getData().getStringExtra("profile");
-
+                    //Log.d("Procedure", "Main으로 전달된 application data :" + application_result);
                     ProfileItem item = ProfileItem.getItemFromJsonString(application_result);
+                    //Log.d("Procedure", "Main에서 얻은 deta를 item으로 바꿈 : "+Boolean.toString(item==null));
                     IsTrainer = item.getUser().equals("Trainer");
                     if (IsTrainer) {
                         Intent trainer_intent = new Intent(this, TrainerActivity.class);

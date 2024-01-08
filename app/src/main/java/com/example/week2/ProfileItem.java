@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonArray;
@@ -53,7 +54,9 @@ public class ProfileItem {
             return null;
         }
         try {
-            jsonObject = (JsonObject) JsonParser.parseString(json);
+            Gson gson = new Gson();
+            jsonObject = gson.fromJson(json, JsonObject.class);
+            //jsonObject = (JsonObject) JsonParser.parseString(json);
         } catch (Exception e){
             Log.d("Procedure", "Not a valid json String");
             return null;

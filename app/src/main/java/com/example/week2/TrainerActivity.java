@@ -7,6 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -32,7 +33,7 @@ public class TrainerActivity extends AppCompatActivity {
         item = ProfileItem.getItemFromJsonString(getIntent().getStringExtra("profile"));
 
         // Notification Fragmeent로 전달
-        notificationsViewModel = new NotificationsViewModel();
+        notificationsViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
         notificationsViewModel.setProfileItem(item);
 
         // 위에 바 숨기기
