@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frame_3"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
     <ImageView
         android:id="@+id/free_icon_u"
         android:layout_width="82dp"
         android:layout_height="82dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="4dp"
         android:background="@drawable/free_icon_user"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
 
     <TextView
         android:id="@+id/member_id"
         android:layout_width="166dp"
         android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="94dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="37dp"
-        android:text=" "
+        android:layout_marginEnd="100dp"
         android:gravity="top"
-        />
-</RelativeLayout>
+        android:text="강다희 회원(여, 25) "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
+</androidx.constraintlayout.widget.ConstraintLayout>

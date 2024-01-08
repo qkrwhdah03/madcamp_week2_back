@@ -8,29 +8,29 @@
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
-
     <TextView
         android:id="@+id/pt_"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
-
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="36dp"
         android:gravity="top"
-        android:text=" "
+        android:text="pt쌤 찾기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <View
-        android:id="@+id/rectangle_1"
-        android:layout_width="292dp"
-        android:layout_height="64dp"
-
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="87dp"
-        android:background="@drawable/rectangle_1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pt_"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

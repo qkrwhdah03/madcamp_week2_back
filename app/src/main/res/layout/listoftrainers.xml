@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frame_1"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/trainername"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="top"
+        android:text="이름"
+        android:textSize="15sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="2dp" />
 
     <ImageView
         android:id="@+id/free_icon_u"
@@ -16,32 +29,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="9dp"
         android:background="@drawable/free_icon_user"
-        />
-
-    <TextView
-        android:id="@+id/trainername"
-        android:layout_width="100dp"
-        android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="124dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:text="이름"
-        android:textSize="15sp"
-        android:gravity="top"
-        />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/some_id"
         android:layout_width="160dp"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="124dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
+        android:gravity="top"
         android:text="소속지역"
         android:textSize="15sp"
-        android:gravity="top"
-        />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="40dp" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
