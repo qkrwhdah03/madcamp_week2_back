@@ -41,6 +41,8 @@ public class ApplicationActivity extends AppCompatActivity {
     private int gender_flag;
     private int user_flag;
 
+    private Bitmap iimage;
+
     private String application_result;
 
     private ApplicationTrainerFragment trainerFragment;
@@ -53,6 +55,7 @@ public class ApplicationActivity extends AppCompatActivity {
         birth_flag = 0;
         gender_flag = 0;
         user_flag = 0;
+        iimage = null;
         application_result = "";
         memberFragment = new ApplicationMemberFragment();
         trainerFragment = new ApplicationTrainerFragment();
@@ -212,7 +215,7 @@ public class ApplicationActivity extends AppCompatActivity {
                     if(iuser.equals("Trainer")){ // Trainer
                         String ibelong = trainerFragment.getBelong();
                         String ihistory = trainerFragment.getBelong();
-                        Bitmap iimage = trainerFragment.getImage();
+                        iimage = trainerFragment.getImage();
                         ProfileItem item = ProfileItem.getTrainerItem(iname, iphone, ibirth, igender, iuser, ibelong, iimage, ihistory);
                         item.setKakaoid(ikakaoid);
                         json_string = item.toJsonString();
@@ -226,19 +229,7 @@ public class ApplicationActivity extends AppCompatActivity {
                     }
                     // 3. 서버로 전송
                     requestSaveApplication(json_string);
-                    // result 잘 전달된건지 확인하고 아니면 재시도...
-                    if(application_result.equals("Done")){
-                        Log.d("Procedure", "Application Save Success");
-                    } else{
-                        Toast.makeText(ApplicationActivity.this, "제출 실패 다시 제출해주세요", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    // 4. 메인 액티비티로 반환
-                    Intent intent = new Intent(ApplicationActivity.this, MainActivity.class);
-                    intent.putExtra("profile", json_string); // 트레이너인지 정보를 전달
-                    Log.d("Procedure", json_string);
-                    setResult(RESULT_OK, intent);
-                    finish();
+
                 } else{
                     Toast.makeText(ApplicationActivity.this, "입력하지 않은 칸이 있습니다", Toast.LENGTH_SHORT).show();
                 }
@@ -250,16 +241,31 @@ public class ApplicationActivity extends AppCompatActivity {
         HttpRequestor.POST("http://172.10.7.24:80/register", json_string, new HttpCallback() {
             @Override
             public void onSuccess(String result) {
-                handleResult(result);
+                Log.d("Procedure", "Application Info Upload Done");
+                handleResult(result, json_string);
             }
             @Override
             public void onFailure(Exception e) {
-
+                Log.d("Procedure", "Application Info Upload Fail");
             }
         });
     }
 
-    private void handleResult(String result){
+    private void handleResult(String result, String json_string){
         application_result = result;
+        // result 잘 전달된건지 확인하고 아니면 재시도...
+        Log.d("Procedure", application_result);
+        if(application_result.equals("Done")){
+            Log.d("Procedure", "Application Save Success");
+        } else{
+            Toast.makeText(ApplicationActivity.this, "제출 실패 다시 제출해주세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // 4. 메인 액티비티로 반환
+        Intent intent = new Intent(ApplicationActivity.this, MainActivity.class);
+        intent.putExtra("profile", json_string); // 트레이너인지 정보를 전달
+        Log.d("Procedure", json_string);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

@@ -4,16 +4,35 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.week2.ProfileItem;
+
+import java.util.ArrayList;
+
 public class DashboardViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private MutableLiveData<ArrayList<ProfileItem>> matched;
+    private MutableLiveData<ArrayList<ProfileItem>> request;
 
     public DashboardViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        matched = new MutableLiveData<>();
+        request = new MutableLiveData<>();
+        matched.setValue(new ArrayList<ProfileItem>());
+        request.setValue(new ArrayList<ProfileItem>());
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setMatched(ArrayList<ProfileItem> list){
+        matched.setValue(list);
     }
+    public void setRequest(ArrayList<ProfileItem> list){
+        request.setValue(list);
+    }
+
+    public LiveData<ArrayList<ProfileItem>> getMatched(){
+        return matched;
+    }
+
+    public LiveData<ArrayList<ProfileItem>> getRequest(){
+        return request;
+    }
+
 }

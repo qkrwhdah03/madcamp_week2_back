@@ -54,19 +54,41 @@ public class MainActivity extends AppCompatActivity {
                     ProfileItem item = ProfileItem.getItemFromJsonString(application_result);
                     //Log.d("Procedure", "Main에서 얻은 deta를 item으로 바꿈 : "+Boolean.toString(item==null));
                     IsTrainer = item.getUser().equals("Trainer");
-                    if (IsTrainer) {
-                        Intent trainer_intent = new Intent(this, TrainerActivity.class);
-                        trainer_intent.putExtra("profile", application_result);
-                        startActivity(trainer_intent);
-                    } else {
-                        Intent user_intent = new Intent(this, MemberActivity.class);
-                        user_intent.putExtra("profile", application_result);
-                        startActivity(user_intent);
-                    }
+
+                    // 서버에 요청해서 멤버 리스트 가져오기
+                    HttpRequestor.GET("http://172.10.7.24:80/profiles", item.getKakaoid(), new HttpCallback() {
+                        @Override
+                        public void onSuccess(String results) {
+                            Log.d("Procedure", "Request Profiles Result : " + results);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    handleAfterApplication(results, application_result);
+                                }
+                            });
+                        }
+                        @Override
+                        public void onFailure(Exception e) {
+                            Log.d("Procedure", "Request Profiles Fail");
+                        }
+                    });
                 }
             }
     );
 
+    private void handleAfterApplication(String results, String application_result){
+        if (IsTrainer) {
+            Intent trainer_intent = new Intent(this, TrainerActivity.class);
+            trainer_intent.putExtra("profiles", results);
+            trainer_intent.putExtra("profile", application_result);
+            startActivity(trainer_intent);
+        } else {
+            Intent user_intent = new Intent(this, MemberActivity.class);
+            user_intent.putExtra("profiles", results);
+            user_intent.putExtra("profile", application_result);
+            startActivity(user_intent);
+        }
+    }
     public MainActivity() {
         /*
         IsMember IsTrainer
@@ -110,26 +132,15 @@ public class MainActivity extends AppCompatActivity {
                                 requestProfileUsingId(user.getId());
                                 //Toast.makeText(MainActivity.this, Long.toString(userId), Toast.LENGTH_LONG).show();
                             } else{
-                                //Toast.makeText(MainActivity.this, "로그인 안됨", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "로그인 실패 : 로그아웃 버튼 클릭 후 재시도", Toast.LENGTH_LONG).show();
                             }
                             return null;
                         }
                     });
-                    // 받은 정보에 따라 설정하기
-                    if(profile != null){
-                        IsMember = true;
-                        IsTrainer = profile.getUser().equals("Trainer");
-                        Log.d("Procedure","Profile is not null");
-                    } else{
-                        IsMember = false;
-                        Log.d("Procedure","Profile is null");
-                    }
-                    // Intent 실행
-                    afterLoginStartIntent(profile);
 
                 } else {
                     // 로그인 실패
-                    Toast.makeText(MainActivity.this, "카카오톡 로그인이 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, "카카오톡 로그인이 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                 }
                 return null;
             }
@@ -171,17 +182,40 @@ public class MainActivity extends AppCompatActivity {
             application_intent.putExtra("kakaoid", userId);
             StartForResult.launch(application_intent);
         } else {
-            if (IsTrainer) {
-                Intent trainer_intent = new Intent(this, TrainerActivity.class);
-                item.setKakaoid(userId);
-                trainer_intent.putExtra("profile", item.toJsonString());
-                startActivity(trainer_intent);
-            } else {
-                Intent user_intent = new Intent(this, MemberActivity.class);
-                item.setKakaoid(userId);
-                user_intent.putExtra("profile", item.toJsonString());
-                startActivity(user_intent);
-            }
+
+            // 서버에 요청해서 멤버 리스트 가져오기
+            HttpRequestor.GET("http://172.10.7.24:80/profiles", item.getKakaoid(), new HttpCallback() {
+                @Override
+                public void onSuccess(String result) {
+                    Log.d("Procedure", "Request Profiles Result : " + result);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            handleRequest(result, item);
+                        }
+                    });
+                }
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d("Procedure", "Request Profiles Fail");
+                }
+            });
+        }
+    }
+
+    private void handleRequest(String result, ProfileItem item){
+        if (IsTrainer) {
+            Intent trainer_intent = new Intent(this, TrainerActivity.class);
+            item.setKakaoid(userId);
+            trainer_intent.putExtra("profiles", result);
+            trainer_intent.putExtra("profile", item.toJsonString());
+            startActivity(trainer_intent);
+        } else {
+            Intent user_intent = new Intent(this, MemberActivity.class);
+            item.setKakaoid(userId);
+            user_intent.putExtra("profiles", result);
+            user_intent.putExtra("profile", item.toJsonString());
+            startActivity(user_intent);
         }
     }
 
@@ -189,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
         HttpRequestor.GET("http://172.10.7.24:80/check", Long.toString(id), new HttpCallback() {
             @Override
             public void onSuccess(String result) {
+                Log.d("Proceduree","Result check login from server :" + result);
                 ProfileItem item = ProfileItem.getItemFromJsonString(result);
                 handleProfileResult(item);
             }
@@ -200,6 +235,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleProfileResult(ProfileItem item){
         profile = item;
+        // 받은 정보에 따라 설정하기
+        if(profile != null){
+            IsMember = true;
+            IsTrainer = profile.getUser().equals("Trainer");
+            Log.d("Procedure","Profile is not null");
+        } else{
+            IsMember = false;
+            Log.d("Procedure","Profile is null");
+        }
+        // Intent 실행
+        afterLoginStartIntent(profile);
         return;
     }
     /*

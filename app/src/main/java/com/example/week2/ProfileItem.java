@@ -53,7 +53,7 @@ public class ProfileItem {
         this.kakaoid = kakaoid;
     }
 
-    static ProfileItem getItemFromJsonString(String json){
+    public static ProfileItem getItemFromJsonString(String json){
         JsonObject jsonObject;
         if(json.equals("")){ // 만약 프로필이 없다면..
             return null;
@@ -69,7 +69,7 @@ public class ProfileItem {
         return getItemFromJsonObject(jsonObject);
     }
 
-    static ProfileItem getItemFromJsonObject(JsonObject obj){
+    public static ProfileItem getItemFromJsonObject(JsonObject obj){
         String okakaoid = obj.get("kakaoid").getAsString();
         String oname = obj.get("name").getAsString();
         String ophone = obj.get("phone").getAsString();
@@ -157,6 +157,7 @@ public class ProfileItem {
                 String encoded_image = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 item.addProperty("image", encoded_image);
             } else item.addProperty("image", "");
+
 
         } catch (Exception e){
             e.printStackTrace();
