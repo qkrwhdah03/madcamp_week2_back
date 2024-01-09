@@ -14,10 +14,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.week2.R;
 import com.example.week2.databinding.FragmentDashboardBinding;
+import com.example.week2.ui.MatchedFragment;
+import com.example.week2.ui.RequestFragment;
 
 import java.time.DateTimeException;
 import java.util.Calendar;
@@ -26,11 +30,16 @@ import java.util.Date;
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
+    private MatchedFragment matchedFragment;
+    private RequestFragment requestFragment;
 
-    // 달력 관련 정보 저장
-    private int year;
-    private int month;
-    private int day;
+    private boolean matched_open;
+    private boolean request_open;
+
+    public DashboardFragment(){
+        matched_open = true;
+        request_open = false;
+    }
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -41,53 +50,58 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // 캘린더 클릭 설정
-        CalendarView calendarView = (CalendarView) binding.trainerCalendar;
-        TextView calendar_todo_text_view = (TextView) binding.calendarTodoText;
-        if(calendarView != null && calendar_todo_text_view != null) {
+        //끼워 넣을 Fragment 정의
+        matchedFragment = new MatchedFragment();
+        requestFragment = new RequestFragment();
 
-            // 오늘 날짜로 초기화
-            Calendar calendar = Calendar.getInstance();
-            year = calendar.get(Calendar.YEAR);
-            month = calendar.get(Calendar.MONTH) + 1;
-            day = calendar.get(Calendar.DAY_OF_MONTH);
-            calendar_todo_text_view.setText(year + " / " + month + " / " + day);
-            // 오늘 날짜 todo list 얻기
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.match_container, matchedFragment)
+                .addToBackStack(null)
+                .commit();
 
-            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(@NonNull CalendarView view, int nyear, int nmonth, int nday) {
-                    year = nyear;
-                    month = nmonth + 1;
-                    day = nday;
-                    calendar_todo_text_view.setText(year + " / " + month + " / " + day);
-                    // 서버로 부터..? 오늘 일정 정보 얻어와서 listview에 넣자.
-
+        View match_click = binding.matchLinearLayout;
+        match_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                matched_open = !matched_open;
+                if(matched_open){
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.match_container, matchedFragment)
+                            .addToBackStack(null)
+                            .commit();
+                } else{
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    Fragment fragment = fragmentManager.findFragmentById(R.id.match_container);
+                    if (fragment != null) {
+                        fragmentManager.beginTransaction().remove(fragment).commit();
+                    }
                 }
-            });
-        } else{
-            Log.d("Error", "Null calender or text view");
-        }
+            }
+        });
 
-        // 추가 버튼 클릭 설정
-        ImageButton add_todo_button = (ImageButton) binding.trainerTodoAddButton;
-        if(add_todo_button != null) {
-            add_todo_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // List View에 입력창 새로 만들기
-                    calendar_todo_text_view.setText("Haha ");
-                }
-            });
-        }
+        View request_click = binding.requestLinearLayout;
+        request_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               request_open = !request_open;
+               if(request_open){
+                   getActivity().getSupportFragmentManager()
+                           .beginTransaction()
+                           .replace(R.id.request_container, requestFragment)
+                           .addToBackStack(null)
+                           .commit();
+               } else{
+                   FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                   Fragment fragment = fragmentManager.findFragmentById(R.id.request_container);
+                   if (fragment != null) {
+                       fragmentManager.beginTransaction().remove(fragment).commit();
+                   }
+               }
+            }
+        });
         return root;
-    }
-
-    private void updateListView(){
-        ListView listView = binding.trainerTodoListview;
-        if(listView != null){
-
-        }
     }
 
     @Override

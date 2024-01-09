@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonArray;
@@ -13,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ProfileItem {
+    private String kakaoid;
     private String name;
     private String phone;
     private String birth;
@@ -47,13 +49,19 @@ public class ProfileItem {
         return new ProfileItem(name, phone, birth, gender, user, "", null, "", goal, check);
     }
 
-    static ProfileItem getItemFromJsonString(String json){
+    public void setKakaoid(String kakaoid) {
+        this.kakaoid = kakaoid;
+    }
+
+    public static ProfileItem getItemFromJsonString(String json){
         JsonObject jsonObject;
         if(json.equals("")){ // 만약 프로필이 없다면..
             return null;
         }
         try {
-            jsonObject = (JsonObject) JsonParser.parseString(json);
+            Gson gson = new Gson();
+            jsonObject = gson.fromJson(json, JsonObject.class);
+            //jsonObject = (JsonObject) JsonParser.parseString(json);
         } catch (Exception e){
             Log.d("Procedure", "Not a valid json String");
             return null;
@@ -61,7 +69,8 @@ public class ProfileItem {
         return getItemFromJsonObject(jsonObject);
     }
 
-    static ProfileItem getItemFromJsonObject(JsonObject obj){
+    public static ProfileItem getItemFromJsonObject(JsonObject obj){
+        String okakaoid = obj.get("kakaoid").getAsString();
         String oname = obj.get("name").getAsString();
         String ophone = obj.get("phone").getAsString();
         String obirth = obj.get("birthdate").getAsString();
@@ -93,9 +102,12 @@ public class ProfileItem {
                 ogoal.add(ja.get(i).getAsInt());
             }
         }
-        return new ProfileItem(oname, ophone, obirth, ogender, ouser, obelong, oimage, ohistory, ogoal, ocheck);
+        ProfileItem item =new ProfileItem(oname, ophone, obirth, ogender, ouser, obelong, oimage, ohistory, ogoal, ocheck);
+        item.setKakaoid(okakaoid);
+        return item;
     }
 
+    public String getKakaoid(){return kakaoid;}
     public String getName(){return name;}
     public String getPhone(){return phone;}
     public String getBirth(){return birth;}
@@ -113,6 +125,7 @@ public class ProfileItem {
     public String toJsonString(){ // 이미지는 포함하지 않는다.
         JsonObject item = new JsonObject();
         try {
+            item.addProperty("kakaoid", kakaoid);
             item.addProperty("name", name);
             item.addProperty("phone", phone);
             item.addProperty("birthdate", birth);
@@ -144,6 +157,7 @@ public class ProfileItem {
                 String encoded_image = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 item.addProperty("image", encoded_image);
             } else item.addProperty("image", "");
+
 
         } catch (Exception e){
             e.printStackTrace();

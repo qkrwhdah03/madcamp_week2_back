@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,9 @@ public class NotificationsFragment extends Fragment {
 
         notificationsViewModel = new ViewModelProvider(requireActivity()).get(NotificationsViewModel.class);
         item = notificationsViewModel.getProfileItem();
-
+        if(item == null){
+            Log.d("Procedure", "Profile item is null");
+        }
         // 사진
         ImageView trainerProfileImage = binding.trainerProfileImage;
         Bitmap image = item.getImage();
