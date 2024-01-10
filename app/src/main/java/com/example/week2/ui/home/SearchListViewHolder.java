@@ -1,6 +1,7 @@
 package com.example.week2.ui.home;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.util.Log;
@@ -36,7 +37,7 @@ public class SearchListViewHolder extends RecyclerView.ViewHolder{
 
     public void showConfirmDialog(ProfileItem item, ProfileItem cur){
         AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-        builder.setTitle("회원 등록 요청");
+        builder.setTitle("트레이너 등록 요청");
         builder.setMessage(item.getName()+ "님에게 요청하시겠습니까?");
 
         builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
@@ -48,9 +49,15 @@ public class SearchListViewHolder extends RecyclerView.ViewHolder{
                         @Override
                         public void onSuccess(String result) {
                             Log.d("Procedure", "ConfirmDialog : Request for match done..");
-                            if(result.equals("fail")){
-                                Toast.makeText(container.getContext(), "이미 신청 완료했습니다.", Toast.LENGTH_SHORT).show();
-                            }
+                            ((Activity) container.getContext()).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String message="";
+                                    if(result.equals("")) message = "신청 완료했습니다.";
+                                    if(result.equals("fail")) message = "이미 요청을 보냈습니다.";
+                                    Toast.makeText(container.getContext(), message, Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
 
                         @Override

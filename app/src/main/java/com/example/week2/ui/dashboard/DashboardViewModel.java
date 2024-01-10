@@ -12,10 +12,12 @@ public class DashboardViewModel extends ViewModel {
 
     private MutableLiveData<ArrayList<ProfileItem>> matched;
     private MutableLiveData<ArrayList<ProfileItem>> request;
+    private MutableLiveData<ProfileItem> item;
 
     public DashboardViewModel() {
         matched = new MutableLiveData<>();
         request = new MutableLiveData<>();
+        item = new MutableLiveData<>();
         matched.setValue(new ArrayList<ProfileItem>());
         request.setValue(new ArrayList<ProfileItem>());
     }
@@ -26,13 +28,12 @@ public class DashboardViewModel extends ViewModel {
     public void setRequest(ArrayList<ProfileItem> list){
         request.setValue(list);
     }
-
+    public void setItem(ProfileItem item){this.item.setValue(item);}
     public LiveData<ArrayList<ProfileItem>> getMatched(){
         return matched;
     }
-
-    public LiveData<ArrayList<ProfileItem>> getRequest(){
+    public MutableLiveData<ArrayList<ProfileItem>> getRequest(){
         return request;
     }
-
+    public LiveData<ProfileItem> getItem(){return item;}
 }

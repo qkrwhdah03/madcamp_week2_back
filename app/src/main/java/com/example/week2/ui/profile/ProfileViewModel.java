@@ -4,16 +4,22 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.week2.ProfileItem;
+
 public class ProfileViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private MutableLiveData<ProfileItem> item;
 
-    public ProfileViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is profile fragment");
+    public ProfileViewModel(){
+        item = new MutableLiveData<>();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setItem(ProfileItem item){
+        this.item.setValue(item);
     }
+
+    public LiveData<ProfileItem> getItem(){
+        return item;
+    }
+
 }

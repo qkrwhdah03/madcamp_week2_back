@@ -1,47 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frame_1"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/find_data_list_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:clipToOutline="true">
 
-    <ImageView
-        android:id="@+id/free_icon_u"
-        android:layout_width="99dp"
-        android:layout_height="104dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="9dp"
-        android:background="@drawable/free_icon_user"
-        />
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/trainer_profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/free_icon_user" />
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
-        android:id="@+id/trainername"
-        android:layout_width="100dp"
-        android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="124dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
+        android:id="@+id/trainer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
         android:text="이름"
-        android:textSize="15sp"
-        android:gravity="top"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/some_id"
-        android:layout_width="160dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="124dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
-        android:text="소속지역"
-        android:textSize="15sp"
-        android:gravity="top"
-        />
+        android:id="@+id/trainer_belong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:singleLine="false"
+        android:text="소속"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/trainer_name" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/trainer_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:singleLine="false"
+        android:text="경력"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/trainer_belong" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

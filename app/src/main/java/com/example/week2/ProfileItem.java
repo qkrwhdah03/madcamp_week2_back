@@ -1,5 +1,6 @@
 package com.example.week2;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -108,6 +109,7 @@ public class ProfileItem {
     }
 
     public String getKakaoid(){return kakaoid;}
+
     public String getName(){return name;}
     public String getPhone(){return phone;}
     public String getBirth(){return birth;}
@@ -118,9 +120,7 @@ public class ProfileItem {
     public ArrayList<Integer> getGoal(){return goal;}
     public ArrayList<Integer> getCheck(){return check;}
 
-    public Bitmap getImage(){
-        return image;
-    }
+    public Bitmap getImage(){return image;}
 
     public String toJsonString(){ // 이미지는 포함하지 않는다.
         JsonObject item = new JsonObject();

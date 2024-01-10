@@ -8,25 +8,30 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.week2.ProfileItem;
 import com.example.week2.databinding.FragmentProfileBinding;
 import com.example.week2.ui.profile.ProfileViewModel;
 
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
+    private LiveData<ProfileItem> item;
+    private ProfileViewModel profileViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ProfileViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(ProfileViewModel.class);
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //final TextView textView = binding.tex
-        //dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
+        item = profileViewModel.getItem();
+
+        // xml 파일 연결해서 값 설정해주기
+
         return root;
     }
 

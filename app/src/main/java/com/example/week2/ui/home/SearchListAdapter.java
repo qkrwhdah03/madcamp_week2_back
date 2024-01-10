@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import com.example.week2.R;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.week2.ProfileItem;
@@ -15,20 +16,54 @@ import java.util.ArrayList;
 
 public class SearchListAdapter extends RecyclerView.Adapter<SearchListViewHolder> {
 
-    private ArrayList<ProfileItem> origin;
+    private LiveData<ArrayList<ProfileItem>> origin;
+    private LiveData<ArrayList<ProfileItem>> matched;
     private ArrayList<ProfileItem> member;
-    private ProfileItem cur;
-    public SearchListAdapter(ArrayList<ProfileItem> origin, ProfileItem cur){
+    private LiveData<ProfileItem> cur;
+    public SearchListAdapter(LiveData<ArrayList<ProfileItem>> origin, LiveData<ArrayList<ProfileItem>> matched, LiveData<ProfileItem> cur){
         this.origin = origin;
+        this.matched = matched;
         this.cur = cur;
         this.member = new ArrayList<>();
-        if(origin != null) {
-            for (ProfileItem item : origin) {
-                if (item.getUser().equals("Member")) {
+        if(this.origin.getValue() != null) {
+            for (ProfileItem item : this.origin.getValue()) {
+                if (item.getUser().equals("Member") && !inMatched(item)) {
                     this.member.add(item);
                 }
             }
         }
+        this.matched.observeForever(profileItems -> {
+            member.clear();
+            if (profileItems != null) {
+                for (ProfileItem item : profileItems) {
+                    if ("Member".equals(item.getUser()) && !inMatched(item)) {
+                        member.add(item);
+                    }
+                }
+                notifyDataSetChanged(); // Notify adapter about the data change
+            }
+        });
+
+        this.origin.observeForever(profileItems -> {
+            member.clear();
+            if (profileItems != null) {
+                for (ProfileItem item : profileItems) {
+                    if ("Member".equals(item.getUser()) && !inMatched(item)) {
+                        member.add(item);
+                    }
+                }
+                notifyDataSetChanged(); // Notify adapter about the data change
+            }
+        });
+    }
+    private boolean inMatched(ProfileItem item){
+        ArrayList<ProfileItem> cur_matched = matched.getValue();
+        for(ProfileItem matched_item : cur_matched){
+            if(matched_item.getKakaoid().equals(item.getKakaoid())){
+                return true;
+            }
+        }
+        return false;
     }
 
     @NonNull
@@ -41,7 +76,7 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListViewHolder
     @Override
     public void onBindViewHolder(@NonNull SearchListViewHolder holder, int position) {
         ProfileItem item = member.get(position);
-        holder.bind(item, cur);
+        holder.bind(item, cur.getValue());
     }
 
     @Override

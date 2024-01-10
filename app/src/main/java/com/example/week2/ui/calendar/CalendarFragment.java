@@ -25,29 +25,9 @@ public class CalendarFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CalendarViewModel calendarViewModel =
-                new ViewModelProvider(this).get(CalendarViewModel.class);
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-
-        Button addButton = root.findViewById(R.id.image_9);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // AddworkFragment를 추가
-                /*
-                AddworkFragment addworkFragment = new AddworkFragment();
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment_container, addworkFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                */
-
-            }
-        });
 
         return root;
     }
@@ -57,44 +37,6 @@ public class CalendarFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-    public void showFoodOfToday(View view) {
-        // View를 찾아옵니다.
-        View foodOfTodayLayout = binding.getRoot().findViewById(R.id.foodoftoday);
-
-        // View를 보이거나 숨기도록 설정합니다.
-        if (foodOfTodayLayout.getVisibility() == View.VISIBLE) {
-            foodOfTodayLayout.setVisibility(View.GONE);
-        } else {
-            foodOfTodayLayout.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public void showWorkOfToday(View view) {
-        // View를 찾아옵니다.
-        View ListOfTodayLayout = binding.getRoot().findViewById(R.id.listofworks);
-
-        // View를 보이거나 숨기도록 설정합니다.
-        if (ListOfTodayLayout.getVisibility() == View.VISIBLE) {
-            ListOfTodayLayout.setVisibility(View.GONE);
-        } else {
-            ListOfTodayLayout.setVisibility(View.VISIBLE);
-        }
-    }
-
-    /*
-    public void showInbodyOfToday(View view) {
-        // View를 찾아옵니다.
-        View foodOfTodayLayout = binding.getRoot().findViewById(R.id.foodoftoday);
-
-        // View를 보이거나 숨기도록 설정합니다.
-        if (foodOfTodayLayout.getVisibility() == View.VISIBLE) {
-            foodOfTodayLayout.setVisibility(View.GONE);
-        } else {
-            foodOfTodayLayout.setVisibility(View.VISIBLE);
-        }
-    }
-    */
 
 
 }

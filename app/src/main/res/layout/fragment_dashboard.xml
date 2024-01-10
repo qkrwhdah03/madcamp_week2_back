@@ -17,7 +17,6 @@
                 android:id="@+id/match_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginRight="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -25,6 +24,7 @@
                     android:id="@+id/dashboard_match"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:layout_marginRight="5dp"
                     android:src="@drawable/ic_user_black_24dp" />
 
                 <TextView
@@ -49,7 +49,7 @@
                 android:id="@+id/request_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginRight="5dp"
+
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -57,6 +57,7 @@
                     android:id="@+id/dashboard_bell"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_marginRight="5dp"
                     android:src="@drawable/ic_notifications_black_24dp" />
 
                 <TextView

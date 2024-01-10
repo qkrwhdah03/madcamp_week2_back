@@ -40,6 +40,7 @@ public class NotificationsFragment extends Fragment {
         if(item == null){
             Log.d("Procedure", "Profile item is null");
         }
+
         // 사진
         ImageView trainerProfileImage = binding.trainerProfileImage;
         Bitmap image = item.getImage();

@@ -11,15 +11,12 @@
         android:layout_width="109dp"
         android:layout_height="109dp"
         android:background="@drawable/free_circle_icon"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="36dp" />
 
     <TextView
-        android:id="@+id/some_id"
         android:layout_width="120dp"
         android:layout_height="27dp"
         android:layout_alignParentLeft="true"
@@ -35,7 +32,6 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/info"
         android:layout_width="52dp"
         android:layout_height="22dp"
         android:layout_alignParentLeft="true"

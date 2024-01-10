@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.icu.util.Output;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -229,6 +231,12 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Exception e) {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "서버 연결 실패 : 로그아웃 버튼 클릭 후 재시도", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }

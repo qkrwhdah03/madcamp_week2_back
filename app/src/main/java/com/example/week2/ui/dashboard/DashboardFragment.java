@@ -1,37 +1,32 @@
 package com.example.week2.ui.dashboard;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.week2.ProfileItem;
 import com.example.week2.R;
 import com.example.week2.databinding.FragmentDashboardBinding;
-import com.example.week2.ui.MatchedFragment;
-import com.example.week2.ui.RequestFragment;
 
-import java.time.DateTimeException;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
+    private DashboardViewModel dashboardViewModel;
     private MatchedFragment matchedFragment;
+    private LiveData<ArrayList<ProfileItem>> matched_list;
     private RequestFragment requestFragment;
+    private MutableLiveData<ArrayList<ProfileItem>> request_list;
+    private LiveData<ProfileItem> item;
 
     private boolean matched_open;
     private boolean request_open;
@@ -44,15 +39,19 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        // View model에서 데이터 얻어오기
+        dashboardViewModel =  new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
+        matched_list = dashboardViewModel.getMatched();
+        request_list = dashboardViewModel.getRequest();
+        item = dashboardViewModel.getItem();
+
         //끼워 넣을 Fragment 정의
-        matchedFragment = new MatchedFragment();
-        requestFragment = new RequestFragment();
+        matchedFragment = new MatchedFragment(matched_list);
+        requestFragment = new RequestFragment(request_list, item);
 
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
