@@ -24,14 +24,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-
 public class TrainerActivity extends AppCompatActivity {
-
     private ActivityTrainerBinding binding;
     private ProfileItem item;
     private NotificationsViewModel notificationsViewModel;
     private HomeViewModel homeViewModel;
-
     private  DashboardViewModel dashboardViewModel;
     private ArrayList<ProfileItem> data;
     private ArrayList<ProfileItem> matched;
@@ -54,7 +51,6 @@ public class TrainerActivity extends AppCompatActivity {
         // 로그인된 프로필 얻어오기
         item = ProfileItem.getItemFromJsonString(getIntent().getStringExtra("profile"));
         handleData(getIntent().getStringExtra("profiles"));
-
 
         // 위에 바 숨기기
         ActionBar actionBar = getSupportActionBar();

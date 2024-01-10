@@ -51,7 +51,7 @@ public class FindDataViewHolder extends RecyclerView.ViewHolder{
 
     public void showConfirmDialog(ProfileItem item, ProfileItem cur) {
         AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-        builder.setTitle("회원 등록 요청");
+        builder.setTitle("매칭 요청");
         builder.setMessage(item.getName() + "님에게 요청하시겠습니까?");
 
         builder.setPositiveButton("네", new DialogInterface.OnClickListener() {

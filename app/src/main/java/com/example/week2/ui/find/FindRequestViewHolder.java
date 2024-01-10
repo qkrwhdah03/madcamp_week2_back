@@ -1,6 +1,8 @@
 package com.example.week2.ui.find;
 
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +16,6 @@ import com.example.week2.HttpCallback;
 import com.example.week2.HttpRequestor;
 import com.example.week2.ProfileItem;
 import com.example.week2.R;
-import com.example.week2.ui.home.SearchListAdapter;
 
 public class FindRequestViewHolder extends RecyclerView.ViewHolder{
 
@@ -55,7 +56,12 @@ public class FindRequestViewHolder extends RecyclerView.ViewHolder{
                     @Override
                     public void onSuccess(String result) {
                         Log.d("Procedure", "Accept Match Request Success");
-                        adapter.remove(item);
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.remove(item);
+                            }
+                        });
                     }
                     @Override
                     public void onFailure(Exception e) {
@@ -73,7 +79,13 @@ public class FindRequestViewHolder extends RecyclerView.ViewHolder{
                     @Override
                     public void onSuccess(String result) {
                         Log.d("Procedure", "Dismiss Match Request Success");
-                        adapter.remove(item);
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.remove(item);
+                            }
+                        });
                     }
                     @Override
                     public void onFailure(Exception e) {
@@ -83,5 +95,4 @@ public class FindRequestViewHolder extends RecyclerView.ViewHolder{
             }
         });
     }
-
 }
