@@ -23,7 +23,7 @@ public class MatchedListViewHolder extends RecyclerView.ViewHolder {
         goal = itemView.findViewById(R.id.matched_member_goal);
     }
     public void bind(ProfileItem item){
-        name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "남":"여")+ ")");
+        name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "여":"남")+ ")");
         phone.setText(item.getPhone());
         goal.setText(getGoal(item.getGoal()));
     }
@@ -33,6 +33,7 @@ public class MatchedListViewHolder extends RecyclerView.ViewHolder {
         list.add("체력 기르기");
         list.add("증량");
         list.add("감량");
+        list.add("바디 프로필");
         list.add("대회 준비");
 
         String ret = "";

@@ -35,7 +35,7 @@ public class FindMatchedViewHolder extends RecyclerView.ViewHolder{
         Bitmap image = item.getImage();
         if(image != null) profile.setImageBitmap(item.getImage());
         else profile.setImageResource(R.drawable.basic_profile);
-        name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "남":"여")+ ")");
+        name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "여":"남")+ ")");
         belong.setText(item.getBelong());
         phone.setText(item.getPhone());
     }

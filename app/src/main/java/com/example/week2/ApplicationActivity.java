@@ -214,7 +214,7 @@ public class ApplicationActivity extends AppCompatActivity {
 
                     if(iuser.equals("Trainer")){ // Trainer
                         String ibelong = trainerFragment.getBelong();
-                        String ihistory = trainerFragment.getBelong();
+                        String ihistory = trainerFragment.getHistory();
                         iimage = trainerFragment.getImage();
                         ProfileItem item = ProfileItem.getTrainerItem(iname, iphone, ibirth, igender, iuser, ibelong, iimage, ihistory);
                         item.setKakaoid(ikakaoid);

@@ -39,6 +39,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height='3px'
+                android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
             <FrameLayout
                 android:id="@+id/find_matched_list_container"
                 android:layout_width="match_parent"
@@ -66,7 +72,11 @@
                     android:text="회원 요청" />
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height='3px'
+                android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent" />
             <FrameLayout
                 android:id="@+id/find_request_list_container"
                 android:layout_width="match_parent"
@@ -95,7 +105,11 @@
                     android:text="탐색" />
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height='3px'
+                android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent" />
             <FrameLayout
                 android:id="@+id/find_data_list_container"
                 android:layout_width="match_parent"

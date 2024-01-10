@@ -37,7 +37,7 @@ public class FindDataViewHolder extends RecyclerView.ViewHolder{
         if(image != null) profile.setImageBitmap(item.getImage());
         else profile.setImageResource(R.drawable.basic_profile);
 
-        name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "남":"여")+ ")");
+        name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "여":"남")+ ")");
         belong.setText(item.getBelong());
         history.setText(item.getHistory());
 

@@ -37,7 +37,11 @@
 
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height='3px'
+                android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent" />
             <FrameLayout
                 android:id="@+id/match_container"
                 android:layout_width="match_parent"
@@ -70,7 +74,11 @@
 
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height='3px'
+                android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent" />
             <FrameLayout
                 android:id="@+id/request_container"
                 android:layout_width="match_parent"

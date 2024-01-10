@@ -82,6 +82,7 @@ public class ProfileFragment extends Fragment {
         list.add("체력 기르기");
         list.add("증량");
         list.add("감량");
+        list.add("바디 프로필");
         list.add("대회 준비");
 
         String ret = "";
@@ -95,6 +96,7 @@ public class ProfileFragment extends Fragment {
     public String getTag(ArrayList<Integer> tag_id){
         Boolean trainer = false;
         Boolean  time = false;
+        Boolean first = true;
         String ret = "";
         List<String> list = new ArrayList<>();
         list.add("남성");
@@ -115,8 +117,10 @@ public class ProfileFragment extends Fragment {
                     ret += list.get(1);
                 }
                 else ret += (", " + list.get(1));
-                if(trainer) ret += " 트레이너 선호해요!\n";
-
+            }
+            if(first && trainer){
+                first = false;
+                ret += " 트레이너 선호해요!\n";
             }
             if(item == 2){
                 ret += "PT 경험 있어요!\n";
@@ -131,11 +135,9 @@ public class ProfileFragment extends Fragment {
                     ret += ", ";
                     ret += list.get(item);
                 }
-                if(item == 5){
-                    ret += "\n";
-                }
             }
         }
+        ret+="\n";
         if(ret.length() == 0){
             ret = " ";
         }
