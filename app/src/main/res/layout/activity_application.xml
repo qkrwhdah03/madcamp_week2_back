@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ApplicationActivity">
 
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/person_add"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="30dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -212,11 +219,11 @@
                     android:text="일반회원" />
             </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/new_form_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </FrameLayout>
+            <FrameLayout
+                android:id="@+id/new_form_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 

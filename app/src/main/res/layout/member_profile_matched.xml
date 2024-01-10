@@ -22,14 +22,16 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="40dp">
 
                 <ImageView
                     android:id="@+id/profile_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
                     android:layout_margin="20dp"
                     android:src="@drawable/free_icon_user" />
 
@@ -45,7 +47,7 @@
                     android:id="@+id/matched_member_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="이름" />
 
@@ -72,6 +74,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -84,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
-                android:text="기능1" />
+                android:text="전화" />
 
             <Button
                 android:id="@+id/trainer_func2"
@@ -92,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:text="가능2" />
+                android:text="문자" />
         </LinearLayout>
 
     </LinearLayout>

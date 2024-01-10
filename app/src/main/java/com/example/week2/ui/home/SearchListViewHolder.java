@@ -144,6 +144,7 @@ public class SearchListViewHolder extends RecyclerView.ViewHolder{
         }
         return ret.substring(0, ret.length()-1);
     }
+
     public void bind(ProfileItem item, ProfileItem cur){
         name.setText(item.getName() + "  (" + (item.getGender().equals("Female")? "남":"여")+ ")");
         goal.setText(getGoal(item.getGoal()));
